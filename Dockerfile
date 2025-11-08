@@ -16,10 +16,10 @@ ENV PATH="/root/.cargo/bin:$PATH"
 COPY . .
 
 # Install Python dependencies using uv
-RUN uv sync
+RUN /root/.cargo/bin/uv sync
 
 # Expose the MCP server port (if needed)
 # EXPOSE 8000
 
 # Set the entry point to run the MCP server
-ENTRYPOINT ["uv", "run", "server.py"]
+ENTRYPOINT ["/root/.cargo/bin/uv", "run", "server.py"]
