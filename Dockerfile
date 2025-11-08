@@ -15,8 +15,8 @@ ENV PATH="/root/.local/bin:$PATH"
 # Copy project files
 COPY . .
 
-# Install Python dependencies using uv
-RUN /root/.local/bin/uv sync
+# Install Python dependencies using uv with official PyPI index
+RUN /root/.local/bin/uv sync --index https://pypi.org/simple/
 
 # Expose the MCP server port (if needed)
 # EXPOSE 8000
