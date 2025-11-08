@@ -53,10 +53,34 @@ The project includes a Dockerfile and GitHub Actions workflow for automated Dock
 - **Dockerfile**: Multi-stage build using Python 3.12-slim with uv package manager
 - **GitHub Actions**: Automated builds on push to main branch and tags
 - **Image Registry**: Images are published to GitHub Container Registry (ghcr.io)
+- **SSE Transport**: Server supports Server-Sent Events (SSE) transport for HTTP clients
+
+### SSE Transport Usage
+
+The MCP server supports Server-Sent Events (SSE) transport, allowing clients to connect via HTTP:
+
+#### Running with SSE
+```bash
+# Using Docker (recommended)
+docker run -p 8000:8000 ghcr.io/zfh521/china-stock-mcp-server:latest
+
+# Or manually
+uv run sse_server.py
+```
+
+#### Connecting to SSE Endpoint
+Once the server is running, clients can connect to the SSE endpoint:
+- **SSE URL**: `http://localhost:8000/sse`
+- **Port**: 8000 (configurable via environment variables)
+
+#### Environment Variables
+- `HOST`: Server host (default: 0.0.0.0)
+- `PORT`: Server port (default: 8000)
 
 ### Dependencies
 - AKShare: Chinese financial data interface package
 - FastMCP: Multi-Call Protocol server framework
+- uvicorn: ASGI web server for SSE transport
 
 ### License
 This project is licensed under the MIT License - see the LICENSE file for details.
@@ -102,10 +126,24 @@ pip install -r requirements.txt
 ```
 
 ### 使用方法
+
+#### 使用 SSE 传输
 ```bash
-# 启动 MCP 服务器
-python main.py
+# 使用 Docker (推荐)
+docker run -p 8000:8000 ghcr.io/zfh521/china-stock-mcp-server:latest
+
+# 或手动运行
+uv run sse_server.py
 ```
+
+#### 连接到 SSE 端点
+服务器运行后，客户端可以连接到 SSE 端点：
+- **SSE URL**: `http://localhost:8000/sse`
+- **端口**: 8000 (可通过环境变量配置)
+
+#### 环境变量
+- `HOST`: 服务器主机 (默认: 0.0.0.0)
+- `PORT`: 服务器端口 (默认: 8000)
 
 ### API 文档
 服务器暴露了许多用于访问不同类型股票市场数据的端点。每个函数都有详细的参数描述和返回值格式。一些关键功能包括：

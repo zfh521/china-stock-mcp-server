@@ -18,8 +18,8 @@ COPY . .
 # Install Python dependencies using uv with official PyPI index
 RUN /root/.local/bin/uv sync --index-url https://pypi.org/simple/
 
-# Expose the MCP server port (if needed)
-# EXPOSE 8000
+# Expose the MCP server port for SSE transport
+EXPOSE 8000
 
-# Set the entry point to run the MCP server
-ENTRYPOINT ["/root/.local/bin/uv", "run", "server.py"]
+# Set the entry point to run the MCP server with SSE transport
+ENTRYPOINT ["/root/.local/bin/uv", "run", "sse_server.py"]
