@@ -16,7 +16,7 @@ ENV PATH="/root/.local/bin:$PATH"
 COPY . .
 
 # Install Python dependencies using uv with official PyPI index
-RUN /root/.local/bin/uv sync --index https://pypi.org/simple/
+RUN /root/.local/bin/uv sync --index-url https://pypi.org/simple/
 
 # Expose the MCP server port (if needed)
 # EXPOSE 8000
