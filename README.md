@@ -14,9 +14,20 @@ China Stock MCP Server is a Multi-Call Protocol (MCP) server that provides compr
 - **Technical Indicators**: Various technical analysis metrics and signals
 
 ### Installation
+
+#### Using Docker (Recommended)
+```bash
+# Pull the latest Docker image
+docker pull ghcr.io/zfh521/china-stock-mcp-server:latest
+
+# Run the MCP server
+docker run -it --rm ghcr.io/zfh521/china-stock-mcp-server:latest
+```
+
+#### Manual Installation
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/china-stock-mcp.git
+git clone https://github.com/zfh521/china-stock-mcp.git
 cd china-stock-mcp/china-stock-mcp-server
 
 # Create and activate a virtual environment
@@ -34,6 +45,14 @@ The server exposes numerous endpoints for accessing different types of stock mar
 - `stock_zh_a_daily(symbol, start_date, end_date, adjust)`: Get historical daily data for a specific stock
 - `stock_individual_info_em(symbol)`: Get detailed information for a specific stock
 - `stock_financial_analysis_indicator(symbol)`: Get financial analysis indicators for a specific stock
+
+### Docker Configuration
+
+The project includes a Dockerfile and GitHub Actions workflow for automated Docker image builds:
+
+- **Dockerfile**: Multi-stage build using Python 3.12-slim with uv package manager
+- **GitHub Actions**: Automated builds on push to main branch and tags
+- **Image Registry**: Images are published to GitHub Container Registry (ghcr.io)
 
 ### Dependencies
 - AKShare: Chinese financial data interface package
@@ -58,9 +77,20 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - **技术指标**：各种技术分析指标和信号
 
 ### 安装
+
+#### 使用 Docker (推荐)
+```bash
+# 拉取最新的 Docker 镜像
+docker pull ghcr.io/zfh521/china-stock-mcp-server:latest
+
+# 运行 MCP 服务器
+docker run -it --rm ghcr.io/zfh521/china-stock-mcp-server:latest
+```
+
+#### 手动安装
 ```bash
 # 克隆仓库
-git clone https://github.com/yourusername/china-stock-mcp.git
+git clone https://github.com/zfh521/china-stock-mcp.git
 cd china-stock-mcp/china-stock-mcp-server
 
 # 创建并激活虚拟环境
